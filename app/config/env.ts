@@ -6,7 +6,11 @@ const envSchema = z.object({
   NEXT_PUBLIC_BITCOIN_NETWORK: z
     .enum(['mainnet', 'testnet'])
     .default('testnet'),
-  NEXT_PUBLIC_BLOCKCHAIN_API_URL: z.string().url(),
+  NEXT_PUBLIC_BLOCKCHAIN_API_URL: z
+    .string()
+    .url()
+    .optional()
+    .default('https://blockstream.info/testnet/api'),
   NEXT_PUBLIC_BLOCKCHAIN_EXPLORER_URL: z
     .string()
     .url()
