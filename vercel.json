@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "installCommand": "yarn install",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_BITCOIN_NETWORK": "testnet",
+    "NEXT_PUBLIC_BLOCKCHAIN_API_URL": "https://blockstream.info/testnet/api"
+  }
+}
