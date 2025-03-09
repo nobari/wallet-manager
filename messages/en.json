@@ -1,0 +1,149 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "wallet": {
+    "create": {
+      "title": "Create New Wallet",
+      "button": "Create Wallet",
+      "creating": "Creating...",
+      "firstWallet": "Create your first wallet to get started",
+      "mnemonicOptions": "Mnemonic Options",
+      "useExisting": "Use existing mnemonic ({count} wallet{plural} created)",
+      "useNew": "Generate new mnemonic",
+      "newMnemonicDesc": "This will create a new wallet with a fresh mnemonic phrase",
+      "existingMnemonicDesc": "This will create an additional wallet using your existing mnemonic phrase"
+    },
+    "import": {
+      "title": "Import Existing Wallet",
+      "button": "Import Wallet",
+      "importing": "Importing...",
+      "mnemonicLabel": "Enter your 12-word mnemonic phrase",
+      "mnemonicPlaceholder": "Enter your mnemonic phrase...",
+      "mnemonicDesc": "This will import or recover your wallet using your backup phrase"
+    },
+    "remove": {
+      "title": "Remove Wallet",
+      "button": "Remove Wallet",
+      "removing": "Removing...",
+      "description": "Select a wallet to remove from your wallet list.",
+      "noWallets": "No wallets available to remove.",
+      "selectWallet": "Select Wallet",
+      "selectOption": "Select a wallet",
+      "warning": "Warning: This action cannot be undone!",
+      "confirmText": "Are you sure you want to remove this wallet? Make sure you have backed up your mnemonic phrase if you want to restore it later.",
+      "confirm": "Yes, Remove",
+      "cancel": "Cancel"
+    },
+    "details": {
+      "selectWallet": "Select a wallet",
+      "noWalletSelected": "Please select a wallet to view details",
+      "address": "Address:",
+      "balance": "Balance:",
+      "satoshis": "satoshis",
+      "refreshBalance": "Refresh Balance",
+      "walletInfo": "Wallet Info",
+      "send": {
+        "title": "Send Bitcoin",
+        "recipientLabel": "Recipient Address",
+        "amountLabel": "Amount (satoshis)",
+        "button": "Send Bitcoin",
+        "sending": "Sending...",
+        "recipientPlaceholder": "Enter Bitcoin address"
+      },
+      "transactions": {
+        "title": "Transactions",
+        "noTransactions": "No transactions found",
+        "fetchError": "Failed to fetch transactions",
+        "usingMockData": "Using mock data instead",
+        "refresh": "Refresh",
+        "type": "Type",
+        "date": "Date",
+        "amount": "Amount",
+        "status": "Status",
+        "actions": "Actions",
+        "received": "Received",
+        "sent": "Sent",
+        "fee": "Fee",
+        "confirmed": "Confirmed",
+        "pending": "Pending",
+        "viewExplorer": "View in Explorer"
+      },
+      "backup": {
+        "privateKeyWarning": "Keep your private key safe! Never share it with anyone:",
+        "mnemonicWarning": "Backup your mnemonic phrase:"
+      }
+    },
+    "network": {
+      "mainnet": "Bitcoin Mainnet",
+      "testnet": "Bitcoin Testnet",
+      "connected": "This wallet is connected to the {network}"
+    },
+    "messages": {
+      "createSuccess": "Wallet created successfully!",
+      "createError": "Failed to create wallet",
+      "importSuccess": "Wallet imported successfully!",
+      "importError": "Failed to import wallet",
+      "importCancelled": "Import cancelled",
+      "invalidMnemonic": "Invalid mnemonic phrase",
+      "duplicateAddress": "This wallet address already exists",
+      "renameSuccess": "Wallet renamed successfully!",
+      "balanceError": "Failed to fetch balance",
+      "transactionSuccess": "Transaction created successfully!",
+      "transactionError": "Failed to create transaction",
+      "dustError": "Amount too small (dust)",
+      "insufficientFunds": "Insufficient funds to complete this transaction",
+      "invalidAmount": "Invalid amount",
+      "removeSuccess": "Wallet removed successfully!",
+      "removeError": "Failed to remove wallet"
+    }
+  },
+  "Error": {
+    "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
+    "title": "Something went wrong!"
+  },
+  "IndexPage": {
+    "title": "Bitcoin Wallet Manager",
+    "description": "Manage your Bitcoin wallets securely"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, ja {🇯🇵 日本} en {🇺🇸 English} other {Unknown}}"
+  },
+  "Manifest": {
+    "name": "next-intl example"
+  },
+  "Navigation": {
+    "home": "Home"
+  },
+  "NotFoundPage": {
+    "description": "Please double-check the browser address bar or use the navigation to go to a known page.",
+    "title": "Page not found"
+  },
+  "PageLayout": {
+    "links": {
+      "docs": {
+        "description": "Learn more about next-intl in the official docs.",
+        "href": "https://next-intl.dev",
+        "title": "Docs"
+      },
+      "source": {
+        "description": "Browse the source code of this example on GitHub.",
+        "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router",
+        "title": "Source code"
+      }
+    }
+  },
+  "PathnamesPage": {
+    "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>",
+    "title": "Pathnames"
+  }
+}

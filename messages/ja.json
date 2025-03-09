@@ -1,0 +1,147 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "cancel": "キャンセル",
+    "save": "保存"
+  },
+  "theme": {
+    "light": "ライトモード",
+    "dark": "ダークモード"
+  },
+  "wallet": {
+    "create": {
+      "title": "新規ウォレット作成",
+      "button": "ウォレットを作成",
+      "creating": "作成中...",
+      "firstWallet": "最初のウォレットを作成してください",
+      "mnemonicOptions": "ニーモニックオプション",
+      "useExisting": "既存のニーモニックを使用（{count}個のウォレットを作成済み）",
+      "useNew": "新しいニーモニックを生成",
+      "newMnemonicDesc": "新しいニーモニックフレーズで新規ウォレットを作成します",
+      "existingMnemonicDesc": "既存のニーモニックフレーズで追加のウォレットを作成します"
+    },
+    "import": {
+      "title": "既存のウォレットをインポート",
+      "button": "ウォレットをインポート",
+      "importing": "インポート中...",
+      "mnemonicLabel": "12単語のニーモニックフレーズを入力",
+      "mnemonicPlaceholder": "ニーモニックフレーズを入力...",
+      "mnemonicDesc": "バックアップフレーズを使用してウォレットをインポートまたは復元します"
+    },
+    "remove": {
+      "title": "ウォレットを削除",
+      "button": "ウォレットを削除",
+      "removing": "削除中...",
+      "description": "ウォレットリストから削除するウォレットを選択してください。",
+      "noWallets": "削除できるウォレットがありません。",
+      "selectWallet": "ウォレットを選択",
+      "selectOption": "ウォレットを選択",
+      "warning": "警告：この操作は元に戻せません！",
+      "confirmText": "このウォレットを削除してもよろしいですか？後で復元したい場合は、ニーモニックフレーズをバックアップしておいてください。",
+      "confirm": "はい、削除します",
+      "cancel": "キャンセル"
+    },
+    "details": {
+      "selectWallet": "ウォレットを選択",
+      "noWalletSelected": "ウォレットを選択して詳細を表示",
+      "address": "アドレス：",
+      "balance": "残高：",
+      "satoshis": "サトシ",
+      "refreshBalance": "残高を更新",
+      "walletInfo": "ウォレット情報",
+      "send": {
+        "title": "ビットコインを送金",
+        "recipientLabel": "送金先アドレス",
+        "amountLabel": "金額（サトシ）",
+        "button": "送金する",
+        "sending": "送金中...",
+        "recipientPlaceholder": "ビットコインアドレスを入力"
+      },
+      "backup": {
+        "privateKeyWarning": "秘密鍵は安全に保管してください！誰とも共有しないでください：",
+        "mnemonicWarning": "ニーモニックフレーズをバックアップしてください："
+      },
+      "transactions": {
+        "title": "取引",
+        "noTransactions": "取引が見つかりません",
+        "fetchError": "取引の取得に失敗しました",
+        "usingMockData": "モックデータを使用しています",
+        "refresh": "更新",
+        "type": "タイプ",
+        "date": "日付",
+        "amount": "金額",
+        "status": "ステータス",
+        "actions": "アクション",
+        "received": "受け取り",
+        "sent": "送信",
+        "fee": "手数料",
+        "confirmed": "確認済み",
+        "pending": "保留中",
+        "viewExplorer": "エクスプローラーで表示"
+      }
+    },
+    "network": {
+      "mainnet": "ビットコインメインネット",
+      "testnet": "ビットコインテストネット",
+      "connected": "このウォレットは{network}に接続されています"
+    },
+    "messages": {
+      "createSuccess": "ウォレットが正常に作成されました！",
+      "createError": "ウォレットの作成に失敗しました",
+      "importSuccess": "ウォレットが正常にインポートされました！",
+      "importError": "ウォレットのインポートに失敗しました",
+      "importCancelled": "インポートがキャンセルされました",
+      "invalidMnemonic": "無効なニーモニックフレーズです",
+      "duplicateAddress": "このウォレットアドレスは既に存在します",
+      "renameSuccess": "ウォレット名が正常に変更されました！",
+      "balanceError": "残高の取得に失敗しました",
+      "transactionSuccess": "取引が正常に作成されました！",
+      "transactionError": "取引の作成に失敗しました",
+      "removeSuccess": "ウォレットが正常に削除されました！",
+      "removeError": "ウォレットの削除に失敗しました"
+    }
+  },
+
+  "Error": {
+    "description": "エラーが発生しました。ページを再読み込みしてください。",
+    "title": "エラーが発生しました！"
+  },
+  "IndexPage": {
+    "title": "ビットコインウォレットマネージャー",
+    "description": "ビットコインウォレットを安全に管理します"
+  },
+  "LocaleSwitcher": {
+    "label": "言語を変更",
+    "locale": "{locale, select, ja {🇯🇵 日本} en {🇺🇸 English} other {不明}}"
+  },
+  "Manifest": {
+    "name": "next-intl の例"
+  },
+  "Navigation": {
+    "home": "ホーム"
+  },
+  "NotFoundPage": {
+    "description": "ブラウザのアドレスバーを確認するか、ナビゲーションを使用して既知のページに移動してください。",
+    "title": "ページが見つかりません"
+  },
+  "PageLayout": {
+    "links": {
+      "docs": {
+        "description": "公式ドキュメントで next-intl について学びます。",
+        "href": "https://sqnco.com",
+        "title": "ドキュメント"
+      },
+      "source": {
+        "description": "GitHub でこの例のソースコードを参照します。",
+        "href": "https://github.com/nobari",
+        "title": "ソースコード"
+      }
+    }
+  },
+  "PathnamesPage": {
+    "description": "<p>パスネームは国際化されています。</p><p>デフォルトの言語が英語の場合、このページのブラウザのアドレスバーに <code>/en/pathnames</code> が表示されます。</p><p>言語をドイツ語に変更すると、URL もローカライズされます (<code>/de/pfadnamen</code>).</p>",
+    "title": "パスネーム"
+  }
+}
