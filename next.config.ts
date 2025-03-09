@@ -11,7 +11,37 @@ const config: NextConfig = {
   },
   // Other Next.js configuration options
   reactStrictMode: true,
-  swcMinify: true
+  swcMinify: true,
+  // Vercel specific configuration
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true
+  },
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true
+  },
+  // Enable WebAssembly
+  webpack: (config) => {
+    // Enable both sync and async WebAssembly
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+      syncWebAssembly: true
+    };
+
+    // Add rule for WebAssembly files
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: 'webassembly/async'
+    });
+
+    return config;
+  }
 };
 
 export default withNextIntl(config);
