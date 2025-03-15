@@ -6,28 +6,29 @@ export function PageLayout({children, title}: PageLayoutProps) {
   const t = useTranslations('PageLayout');
 
   return (
-    <div className="relative flex grow flex-col bg-slate-850 py-36">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-1 size-[20500px] translate-x-[-47.5%] rounded-full bg-gradient-to-b from-slate-900 via-cyan-500" />
-      </div>
-      <div className="container relative flex grow flex-col px-4">
-        <h1 className="text-3xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
-          {title}
-        </h1>
-        <div className="mt-6 text-gray-400 md:text-lg">{children}</div>
-        <div className="mt-auto grid grid-cols-1 gap-4 pt-20 md:grid-cols-2 lg:gap-12">
-          <ExternalLink
-            description={t('links.docs.description')}
-            href={t('links.docs.href')}
-            title={t('links.docs.title')}
-          />
-          <ExternalLink
-            description={t('links.source.description')}
-            href={t('links.source.href')}
-            title={t('links.source.title')}
-          />
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 transition-colors">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="space-y-6">
+          <h1 className="text-3xl font-semibold leading-tight tracking-tight text-gray-900 dark:text-white md:text-5xl">
+            {title}
+          </h1>
+          <div className="text-gray-600 dark:text-gray-400 md:text-lg">
+            {children}
+          </div>
+          <div className="mt-12 grid grid-cols-1 gap-4 pt-8 border-t border-gray-200 dark:border-gray-700 md:grid-cols-2 lg:gap-8">
+            <ExternalLink
+              description={t('links.author.description')}
+              href={t('links.author.href')}
+              title={t('links.author.title')}
+            />
+            <ExternalLink
+              description={t('links.source.description')}
+              href={t('links.source.href')}
+              title={t('links.source.title')}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

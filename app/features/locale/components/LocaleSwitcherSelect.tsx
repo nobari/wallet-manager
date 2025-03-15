@@ -37,7 +37,7 @@ export function LocaleSwitcherSelect({
   }
 
   return (
-    <div className={clsx('absolute top-2 left-2 w-32 z-10', className)}>
+    <div className={clsx('fixed top-4 left-4 w-32 z-50', className)}>
       <Listbox
         value={defaultValue}
         onChange={onSelectChange}
@@ -47,15 +47,22 @@ export function LocaleSwitcherSelect({
           <Listbox.Label className="sr-only">{label}</Listbox.Label>
           <Listbox.Button
             className={clsx(
-              'relative w-full cursor-default rounded-md py-2 pl-3 pr-10 text-left',
-              'bg-transparent text-gray-400 hover:text-gray-600 dark:hover:text-gray-300',
+              'relative w-full cursor-default rounded-lg px-3 py-2 text-left',
+              'bg-white dark:bg-gray-800 shadow-sm',
+              'border border-gray-200 dark:border-gray-700',
+              'text-gray-900 dark:text-white',
+              'hover:border-blue-500 dark:hover:border-blue-400',
               'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+              'transition-colors',
               isPending && 'opacity-50'
             )}
           >
             <span className="block truncate">{selectedOption?.label}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronDownIcon className="h-4 w-4" aria-hidden="true" />
+              <ChevronDownIcon
+                className="h-4 w-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+              />
             </span>
           </Listbox.Button>
           <Transition
@@ -66,9 +73,12 @@ export function LocaleSwitcherSelect({
           >
             <Listbox.Options
               className={clsx(
-                'absolute mt-1 max-h-60 w-full overflow-auto rounded-md',
-                'bg-white dark:bg-gray-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5',
-                'focus:outline-none text-sm'
+                'absolute mt-2 max-h-60 w-full overflow-auto rounded-lg',
+                'bg-white dark:bg-gray-800',
+                'border border-gray-200 dark:border-gray-700',
+                'shadow-lg',
+                'focus:outline-none',
+                'text-sm'
               )}
             >
               {options.map((option) => (
@@ -78,9 +88,10 @@ export function LocaleSwitcherSelect({
                   className={({active}) =>
                     clsx(
                       'relative cursor-default select-none py-2 pl-10 pr-4',
+                      'transition-colors',
                       active
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100'
-                        : 'text-gray-900 dark:text-gray-100'
+                        ? 'bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400'
+                        : 'text-gray-900 dark:text-white'
                     )
                   }
                 >

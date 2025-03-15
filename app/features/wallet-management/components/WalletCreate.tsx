@@ -7,33 +7,93 @@ import toast from 'react-hot-toast';
 import {useTranslations} from 'next-intl';
 import clsx from 'clsx';
 import {WalletCreateProps} from '../types';
+import {WalletMnemonicSelector} from './WalletMnemonicSelector';
+import {WalletDetails} from '@/lib/bitcoin';
 
 export function WalletCreate({className}: WalletCreateProps) {
   const t = useTranslations('wallet');
-
   const [isLoading, setIsLoading] = useState(false);
-  const [useNewMnemonic, setUseNewMnemonic] = useState(false);
+  const [useNewMnemonic, setUseNewMnemonic] = useState(true);
+  const [showMnemonicSelector, setShowMnemonicSelector] = useState(false);
+  const [generatedWallets, setGeneratedWallets] = useState<WalletDetails[]>([]);
+  const [isGeneratingMore, setIsGeneratingMore] = useState(false);
+
   const {wallets, addWallet} = useWalletStore((state) => ({
     wallets: state.wallets,
     addWallet: state.addWallet
   }));
 
   const handleCreateWallet = async () => {
+    console.log('handleCreateWallet');
     try {
       setIsLoading(true);
-      const existingMnemonic = wallets[0]?.mnemonic;
-      const newWallet = await generateWallet(
-        useNewMnemonic ? undefined : existingMnemonic,
-        useNewMnemonic ? 0 : wallets.length
-      );
-      addWallet(newWallet);
-      toast.success(t('messages.createSuccess'));
+
+      if (!useNewMnemonic) {
+        // Use existing mnemonic flow - create a single wallet
+        const existingMnemonic = wallets[0]?.mnemonic;
+        const newWallet = await generateWallet(
+          existingMnemonic,
+          wallets.length
+        );
+        addWallet(newWallet);
+        toast.success(t('messages.createSuccess'));
+      } else {
+        // Generate 10 wallets with new mnemonics and show selector
+        const newWallets = [];
+        for (let i = 0; i < 10; i++) {
+          const newWallet = await generateWallet(undefined, 0);
+          newWallet.name = `Wallet ${i + 1}`;
+          newWallets.push(newWallet);
+        }
+        setGeneratedWallets(newWallets);
+        setShowMnemonicSelector(true);
+      }
     } catch (error) {
       console.error('Error creating wallet:', error);
       toast.error(t('messages.createError'));
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleGenerateMoreWallets = async () => {
+    try {
+      setIsGeneratingMore(true);
+      const currentCount = generatedWallets.length;
+      const newWallets = [...generatedWallets];
+
+      for (let i = 0; i < 10; i++) {
+        const newWallet = await generateWallet(undefined, 0);
+        newWallet.name = `Wallet ${currentCount + i + 1}`;
+        newWallets.push(newWallet);
+      }
+
+      setGeneratedWallets(newWallets);
+    } catch (error) {
+      console.error('Error generating more wallets:', error);
+      toast.error('Failed to generate more wallets');
+    } finally {
+      setIsGeneratingMore(false);
+    }
+  };
+
+  const handleSelectWallets = (selectedWallets: WalletDetails[]) => {
+    try {
+      for (const wallet of selectedWallets) {
+        addWallet(wallet);
+      }
+      toast.success(`Added ${selectedWallets.length} wallet(s) successfully`);
+      setShowMnemonicSelector(false);
+      setGeneratedWallets([]);
+    } catch (error) {
+      console.error('Error adding selected wallets:', error);
+      toast.error('Failed to add selected wallets');
+    }
+  };
+
+  const handleCancelSelection = () => {
+    setShowMnemonicSelector(false);
+    setGeneratedWallets([]);
   };
 
   return (
@@ -82,7 +142,7 @@ export function WalletCreate({className}: WalletCreateProps) {
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
             {useNewMnemonic
-              ? t('create.newMnemonicDesc')
+              ? t('create.multipleWalletsDesc')
               : t('create.existingMnemonicDesc')}
           </p>
         </>
@@ -98,6 +158,15 @@ export function WalletCreate({className}: WalletCreateProps) {
       >
         {isLoading ? t('create.creating') : t('create.button')}
       </button>
+
+      <WalletMnemonicSelector
+        wallets={generatedWallets}
+        onSelect={handleSelectWallets}
+        onCancel={handleCancelSelection}
+        onGenerateMore={handleGenerateMoreWallets}
+        isGeneratingMore={isGeneratingMore}
+        isOpen={showMnemonicSelector}
+      />
     </div>
   );
 }

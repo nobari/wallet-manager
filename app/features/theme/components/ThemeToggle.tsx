@@ -10,31 +10,40 @@ import {ThemeToggleProps} from '../types';
 
 export function ThemeToggle({className}: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
-  const {theme, setTheme} = useTheme();
+  const {resolvedTheme, setTheme} = useTheme();
   const t = useTranslations('theme');
-  const isDark = theme === 'dark';
 
-  // Avoid hydration mismatch
-  useEffect(() => setMounted(true), []);
+  // Avoid hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render anything until client-side to avoid hydration mismatch
   if (!mounted) return null;
 
+  const isDark = resolvedTheme === 'dark';
+
   return (
-    <div className={clsx('fixed top-4 right-4', className)}>
+    <div className={clsx('fixed top-4 right-4 z-50', className)}>
       <Switch
         checked={isDark}
         onChange={() => setTheme(isDark ? 'light' : 'dark')}
         className={clsx(
           'relative inline-flex h-10 w-16 items-center rounded-full p-1',
-          'bg-white dark:bg-gray-800 shadow-lg border border-gray-200 dark:border-gray-700',
-          'transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2',
-          'focus-visible:ring-blue-500 focus-visible:ring-opacity-75'
+          'bg-white dark:bg-gray-800',
+          'border border-gray-200 dark:border-gray-700',
+          'shadow-sm',
+          'hover:border-blue-500 dark:hover:border-blue-400',
+          'transition-colors duration-200 ease-in-out',
+          'focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-opacity-75'
         )}
       >
         <span className="sr-only">{isDark ? t('light') : t('dark')}</span>
         <span
           className={clsx(
             'pointer-events-none inline-block h-7 w-7 transform rounded-full',
-            'bg-white dark:bg-gray-800 shadow-sm',
+            'bg-white dark:bg-gray-800',
+            'border border-gray-200 dark:border-gray-700',
             'flex items-center justify-center',
             'transition-transform duration-200 ease-in-out',
             isDark ? 'translate-x-7' : 'translate-x-0'

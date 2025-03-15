@@ -20,7 +20,15 @@
       "useExisting": "既存のニーモニックを使用（{count}個のウォレットを作成済み）",
       "useNew": "新しいニーモニックを生成",
       "newMnemonicDesc": "新しいニーモニックフレーズで新規ウォレットを作成します",
-      "existingMnemonicDesc": "既存のニーモニックフレーズで追加のウォレットを作成します"
+      "existingMnemonicDesc": "既存のニーモニックフレーズで追加のウォレットを作成します",
+      "selectWallets": "ウォレットを選択",
+      "selectWalletsDesc": "ウォレットリストに追加するウォレットを1つ以上選択してください。",
+      "mnemonic": "ニーモニック",
+      "confirmSelection": "選択を確認",
+      "cancel": "キャンセル",
+      "generating": "生成中...",
+      "generateMore": "さらに10個生成",
+      "multipleWalletsDesc": "選択できる複数の新しいニーモニックを持つウォレットを生成します"
     },
     "import": {
       "title": "既存のウォレットをインポート",
@@ -99,13 +107,15 @@
       "balanceError": "残高の取得に失敗しました",
       "transactionSuccess": "取引が正常に作成されました！",
       "transactionError": "取引の作成に失敗しました",
+      "dustError": "金額が小さすぎます（ダスト）",
+      "insufficientFunds": "この取引を完了するのに十分な資金がありません",
+      "invalidAmount": "無効な金額",
       "removeSuccess": "ウォレットが正常に削除されました！",
       "removeError": "ウォレットの削除に失敗しました"
     }
   },
-
   "Error": {
-    "description": "エラーが発生しました。ページを再読み込みしてください。",
+    "description": "<p>申し訳ありませんが、エラーが発生しました。</p><p>訪問していたページを<retry>再読み込み</retry>してみてください。</p>",
     "title": "エラーが発生しました！"
   },
   "IndexPage": {
@@ -128,20 +138,20 @@
   },
   "PageLayout": {
     "links": {
-      "docs": {
-        "description": "公式ドキュメントで next-intl について学びます。",
-        "href": "https://sqnco.com",
-        "title": "ドキュメント"
+      "author": {
+        "description": "このプロジェクトの作者です。",
+        "href": "https://github.com/nobari",
+        "title": "Sadegh Nobari"
       },
       "source": {
-        "description": "GitHub でこの例のソースコードを参照します。",
-        "href": "https://github.com/nobari",
+        "description": "このプロジェクトのソースコードです。",
+        "href": "https://github.com/nobari/wallet-manager",
         "title": "ソースコード"
       }
     }
   },
   "PathnamesPage": {
-    "description": "<p>パスネームは国際化されています。</p><p>デフォルトの言語が英語の場合、このページのブラウザのアドレスバーに <code>/en/pathnames</code> が表示されます。</p><p>言語をドイツ語に変更すると、URL もローカライズされます (<code>/de/pfadnamen</code>).</p>",
+    "description": "<p>パスネームは国際化されています。</p><p>デフォルトの言語が英語の場合、このページのブラウザのアドレスバーに <code>/en/pathnames</code> が表示されます。</p><p>言語を日本語に変更すると、URL もローカライズされます (<code>/ja/pathnames</code>).</p>",
     "title": "パスネーム"
   }
 }
