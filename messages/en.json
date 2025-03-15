@@ -20,7 +20,15 @@
       "useExisting": "Use existing mnemonic ({count} wallet{plural} created)",
       "useNew": "Generate new mnemonic",
       "newMnemonicDesc": "This will create a new wallet with a fresh mnemonic phrase",
-      "existingMnemonicDesc": "This will create an additional wallet using your existing mnemonic phrase"
+      "existingMnemonicDesc": "This will create an additional wallet using your existing mnemonic phrase",
+      "selectWallets": "Select Wallets",
+      "selectWalletsDesc": "Select one or more wallets to add to your wallet list.",
+      "mnemonic": "Mnemonic",
+      "confirmSelection": "Confirm Selection",
+      "cancel": "Cancel",
+      "generating": "Generating...",
+      "generateMore": "Generate 10 More",
+      "multipleWalletsDesc": "This will generate multiple wallets with new mnemonics for you to choose from"
     },
     "import": {
       "title": "Import Existing Wallet",

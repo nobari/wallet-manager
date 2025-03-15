@@ -14,8 +14,8 @@ A modern, secure, and user-friendly Bitcoin wallet application built with cuttin
 - **Transaction Handling**: Send Bitcoin transactions with customizable fees and confirmation tracking
 - **Transaction History**: View detailed transaction history with real-time updates
 - **Multi-Network Support**: Seamlessly switch between Bitcoin mainnet and testnet
-- **Internationalization**: Full i18n support with next-intl for a global user base
-- **Dark/Light Mode**: Elegant theme switching with next-themes
+- **Internationalization**: Full i18n support with next-intl for English and Japanese languages
+- **Dark/Light Mode**: Elegant theme switching with next-themes and hydration-safe implementation
 - **Responsive Design**: Beautiful UI built with TailwindCSS and HeadlessUI components
 - **Enterprise Architecture**: Implements SOLID principles with a feature-based architecture
 
@@ -28,8 +28,8 @@ A modern, secure, and user-friendly Bitcoin wallet application built with cuttin
 - **Form Validation**: Zod
 - **Bitcoin Libraries**: bitcoinjs-lib, bip32, bip39, tiny-secp256k1
 - **Testing**: Jest, React Testing Library, Playwright
-- **Internationalization**: next-intl
-- **Theming**: next-themes
+- **Internationalization**: next-intl with full English and Japanese support
+- **Theming**: next-themes with client-side rendering to prevent hydration mismatches
 - **Notifications**: react-hot-toast
 - **HTTP Client**: Axios
 
@@ -42,12 +42,18 @@ This project follows a feature-based architecture with strict adherence to SOLID
 ```
 app/
 ├── features/
-│   ├── theme/               # Theme management
-│   ├── locale/              # Internationalization
+│   ├── theme/               # Theme management with hydration-safe implementation
+│   │   └── components/
+│   │       ├── ThemeReset.tsx      # Cleans up theme attributes to prevent hydration issues
+│   │       ├── ThemeToggle.tsx     # UI component for switching themes
+│   │       └── ThemeInitializer.tsx # Sets up theme based on user preferences
+│   ├── locale/              # Internationalization with English and Japanese support
 │   ├── navigation/          # Navigation components
 │   ├── layout/              # Layout components
 │   ├── wallet-management/   # Wallet creation/import
 │   └── wallet-detail/       # Transaction history and details
+├── [locale]/                # Locale-specific routes (en, ja)
+│   └── layout.tsx           # Locale-aware layout with hydration safety
 └── components/              # Shared components
 ```
 
@@ -58,6 +64,25 @@ app/
 - **Liskov Substitution**: Components are interchangeable with their subtypes
 - **Interface Segregation**: Clean, focused interfaces prevent dependency bloat
 - **Dependency Inversion**: High-level modules depend on abstractions, not implementations
+
+### Hydration Safety
+
+The application implements several strategies to prevent hydration mismatches:
+
+- **Client-side Theme Application**: Theme classes are only applied after client-side hydration is complete
+- **ThemeReset Component**: Aggressively removes theme-related attributes from the HTML element
+- **Delayed Mounting**: Components that could cause hydration mismatches are only rendered after initial hydration
+- **suppressHydrationWarning**: Used strategically on elements that might have different server/client rendering
+
+## 🌐 Internationalization
+
+The application supports multiple languages with a robust internationalization system:
+
+- **Supported Languages**: English (en) and Japanese (ja)
+- **URL Localization**: URLs are localized based on the selected language (e.g., `/en/pathnames`, `/ja/pathnames`)
+- **Translation Files**: Separate JSON files for each supported language
+- **Dynamic Content**: All UI text is internationalized, including error messages and notifications
+- **Language Switching**: Users can switch languages on-the-fly with immediate UI updates
 
 ## 🚦 Getting Started
 
@@ -141,6 +166,8 @@ yarn build
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Bitcoin Developer Documentation](https://developer.bitcoin.org/)
 - [SOLID Principles](https://en.wikipedia.org/wiki/SOLID)
+- [next-intl Documentation](https://next-intl.dev)
+- [next-themes Documentation](https://github.com/pacocoursey/next-themes)
 
 ## 📄 License
 

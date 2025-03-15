@@ -2,7 +2,6 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {ReactNode} from 'react';
-import {clsx} from 'clsx';
 import {Inter} from 'next/font/google';
 import {routing, Locale} from '../../i18n/routing';
 import {Providers} from '@/providers';
@@ -47,15 +46,13 @@ export default async function LocaleLayout({children, params}: Props) {
   const messages = await getMessages();
 
   return (
-    <html className="h-full" lang={locale} suppressHydrationWarning>
-      {/* flex h-full flex-col  */}
-      <body
-        className={clsx(
-          inter.className,
-          'antialiased min-h-screen transition-colors'
-        )}
-      >
-        <Providers messages={messages} locale={locale as Locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <Providers
+          messages={messages}
+          locale={locale as Locale}
+          fontClass={inter.className}
+        >
           <Header />
           {children}
         </Providers>

@@ -10,13 +10,18 @@ import {ThemeToggleProps} from '../types';
 
 export function ThemeToggle({className}: ThemeToggleProps) {
   const [mounted, setMounted] = useState(false);
-  const {theme, setTheme} = useTheme();
+  const {resolvedTheme, setTheme} = useTheme();
   const t = useTranslations('theme');
-  const isDark = theme === 'dark';
 
-  // Avoid hydration mismatch
-  useEffect(() => setMounted(true), []);
+  // Avoid hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Don't render anything until client-side to avoid hydration mismatch
   if (!mounted) return null;
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <div className={clsx('fixed top-4 right-4', className)}>
