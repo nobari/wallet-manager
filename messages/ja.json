@@ -27,7 +27,6 @@
       "confirmSelection": "選択を確認",
       "cancel": "キャンセル",
       "generating": "生成中...",
-      "generateMore": "さらに10個生成",
       "multipleWalletsDesc": "選択できる複数の新しいニーモニックを持つウォレットを生成します"
     },
     "import": {

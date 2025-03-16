@@ -42,7 +42,6 @@ export function WalletCreate({className}: WalletCreateProps) {
         const newWallets = [];
         for (let i = 0; i < 10; i++) {
           const newWallet = await generateWallet(undefined, 0);
-          newWallet.name = `Wallet ${i + 1}`;
           newWallets.push(newWallet);
         }
         setGeneratedWallets(newWallets);
@@ -59,12 +58,10 @@ export function WalletCreate({className}: WalletCreateProps) {
   const handleGenerateMoreWallets = async () => {
     try {
       setIsGeneratingMore(true);
-      const currentCount = generatedWallets.length;
       const newWallets = [...generatedWallets];
 
       for (let i = 0; i < 10; i++) {
         const newWallet = await generateWallet(undefined, 0);
-        newWallet.name = `Wallet ${currentCount + i + 1}`;
         newWallets.push(newWallet);
       }
 

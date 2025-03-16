@@ -7,6 +7,7 @@ import {CheckIcon} from '@heroicons/react/24/outline';
 import {Dialog, Transition} from '@headlessui/react';
 import {Fragment} from 'react';
 import clsx from 'clsx';
+import {useInView} from 'react-intersection-observer';
 
 interface WalletMnemonicSelectorProps {
   wallets: WalletDetails[];
@@ -28,6 +29,19 @@ export function WalletMnemonicSelector({
   const t = useTranslations('wallet');
   const [selectedWallets, setSelectedWallets] = useState<WalletDetails[]>([]);
   const [mounted, setMounted] = useState(false);
+
+  // Setup intersection observer for infinite scroll
+  const {ref: loadMoreRef, inView} = useInView({
+    threshold: 0.5,
+    rootMargin: '100px'
+  });
+
+  // Trigger load more when scrolled to bottom
+  useEffect(() => {
+    if (inView && !isGeneratingMore) {
+      onGenerateMore();
+    }
+  }, [inView, isGeneratingMore, onGenerateMore]);
 
   // Prevent hydration mismatch by only rendering on the client
   useEffect(() => {
@@ -129,6 +143,17 @@ export function WalletMnemonicSelector({
                           </div>
                         </div>
                       ))}
+                      {/* Infinite scroll trigger element */}
+                      <div
+                        ref={loadMoreRef}
+                        className="flex justify-center py-4"
+                      >
+                        {isGeneratingMore && (
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
+                            {t('create.generating')}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -147,16 +172,6 @@ export function WalletMnemonicSelector({
                     onClick={onCancel}
                   >
                     {t('create.cancel')}
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                    onClick={onGenerateMore}
-                    disabled={isGeneratingMore}
-                  >
-                    {isGeneratingMore
-                      ? t('create.generating')
-                      : t('create.generateMore')}
                   </button>
                 </div>
               </Dialog.Panel>

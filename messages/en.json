@@ -27,7 +27,6 @@
       "confirmSelection": "Confirm Selection",
       "cancel": "Cancel",
       "generating": "Generating...",
-      "generateMore": "Generate 10 More",
       "multipleWalletsDesc": "This will generate multiple wallets with new mnemonics for you to choose from"
     },
     "import": {

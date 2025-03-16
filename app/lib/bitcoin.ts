@@ -51,7 +51,7 @@ export const generateWallet = async (
     publicKey: Buffer.from(keyPair.publicKey).toString('hex'),
     mnemonic,
     accountIndex,
-    name: `Wallet ${accountIndex + 1}`
+    name: `Wallet ${address!.slice(0, 3)}...${address!.slice(-3)}`
   };
 };
 
